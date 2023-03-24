@@ -1,0 +1,22 @@
+{
+    "data_format": "csv",
+    "data_source": "iris",
+    "preprocessing": {
+        "null_imputation_num": "mean",
+        "null_imputation_cat": "mode",
+        "outlier_treatment": "remove",
+        "data_scaling": "robust",
+        "data_normalization": "true",
+        "data_standardization": "true"
+    },
+    "training": {
+        "split_per": "",
+        "sort_by": "",
+        "model": []
+    },
+    "metrics": [
+        "presision",
+        "recall",
+        "f1"
+    ]
+}
