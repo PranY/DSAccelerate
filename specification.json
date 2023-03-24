@@ -15,7 +15,7 @@
         "model": []
     },
     "metrics": [
-        "presision",
+        "precision",
         "recall",
         "f1"
     ]

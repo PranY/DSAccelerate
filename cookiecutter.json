@@ -1,0 +1,12 @@
+{
+    "default_context": {
+        "project_name": "Test_project",
+        "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+        "author_name": "Razorpay",
+        "description": "description",
+        "open_source_license": "No license file",
+        "s3_bucket": "No",
+        "aws_profile": "default",
+        "python_interpreter": "python3"
+    }
+}
