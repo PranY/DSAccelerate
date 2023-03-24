@@ -1,0 +1,34 @@
+{
+    "default_context": {
+        "project_name": "Test_project_2",
+        "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+        "author_name": "Razorpay",
+        "description": "description",
+        "open_source_license": "No license file",
+        "s3_bucket": "No",
+        "aws_profile": "default",
+        "python_interpreter": "python3"
+    },
+    "specifications": {
+        "data_format": "csv",
+        "data_source": "iris",
+        "preprocessing": {
+            "null_imputation_num": "mean",
+            "null_imputation_cat": "mode",
+            "outlier_treatment": "remove",
+            "data_scaling": "robust",
+            "data_normalization": "true",
+            "data_standardization": "true"
+        },
+        "training": {
+            "split_per": "",
+            "sort_by": "",
+            "model": []
+        },
+        "metrics": [
+            "precision",
+            "recall",
+            "f1"
+        ]
+    }
+}
