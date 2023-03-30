@@ -1,0 +1,6 @@
+{
+"read_csv_file": "Write python code with documentation following the pep8 guidelines. Write a function that uses pandas library and is able to read a csv file, the function should take input of the csv file path.",
+"read_csv_url": "Write python code with documentation following the pep8 guidelines. Write a function that is able to read a csv file, the function should take input of a url path. Return a pandas dataframe is the csv reading is successful.",
+"read_sql_query": "Write python code with documentation following the pep8 guidelines. Write a function that reads data using a SQL query provided in string format in the function. Allow the user to additionally provide any SQL connector related parameters. If the connector parameters are provided, write a connecter internal to the method and execute the query, otherwise raise relevant errors.",
+"read_redis_data": "Write python code with documentation following the pep8 guidelines. Write a function that reads data from redis and loads it into pandas dataframe"    
+}
