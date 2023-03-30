@@ -14,13 +14,20 @@ for key, value in data.items():
     if isinstance(value, dict):
         result[key] = value
 
-# Print the contents of the result dictionary
-print(result)
-
+# Get project directory from config
 project_dir = result["default_context"]["project_name"].lower()
 
+# Prompt Structure
+# {
+#     task: (
+#         prompt,
+#         file_path
+#     )
+# }
 
 prompts = {
-    project_dir
-    + "/sample.py": "import train data from 'data/train.csv', test data from 'data/test.csv', with target column 'churn_value', load model from 'model/tree.pkl', predict 'churn_value' on train and test data and compute and print ['precision', 'recall', 'f1'] and save metrics in train_metrics.txt and test_metrics.txt"
+    "sample": (
+        "import train data from 'data/train.csv', test data from 'data/test.csv', with target column 'churn_value', load model from 'model/tree.pkl', predict 'churn_value' on train and test data and compute and print ['precision', 'recall', 'f1'] and save metrics in train_metrics.txt and test_metrics.txt",
+        project_dir + "/sample.py",
+    )
 }

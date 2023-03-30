@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_selection import SelectKBest, f_classif, f_regression
 
+
 class FeatureEngineering:
     """
     A class for feature engineering in machine learning.
@@ -14,22 +15,24 @@ class FeatureEngineering:
         self.df = df
         self.problem_type = problem_type
 
-    def impute_missing(self, method: str = 'mean') -> pd.DataFrame:
+    def impute_missing(self, method: str = "mean") -> pd.DataFrame:
         """
         Imputes missing values in the DataFrame.
 
         Parameters:
         - method (str): The method to use for imputing missing values. Default is 'mean'.
-        
+
         Returns:
         - pd.DataFrame: The updated DataFrame with imputed missing values.
         """
-        if method == 'mean':
+        if method == "mean":
             return self.df.fillna(self.df.mean())
-        elif method == 'median':
+        elif method == "median":
             return self.df.fillna(self.df.median())
         else:
-            raise ValueError("Invalid imputation method. Valid options are 'mean' and 'median'.")
+            raise ValueError(
+                "Invalid imputation method. Valid options are 'mean' and 'median'."
+            )
 
     def scale(self) -> pd.DataFrame:
         """
@@ -51,14 +54,19 @@ class FeatureEngineering:
         Returns:
         - pd.DataFrame: The updated DataFrame with selected features.
         """
-        if self.problem_type == 'classification':
+        if self.problem_type == "classification":
             selector = SelectKBest(score_func=f_classif, k=k)
-        elif self.problem_type == 'regression':
+        elif self.problem_type == "regression":
             selector = SelectKBest(score_func=f_regression, k=k)
         else:
-            raise ValueError("Invalid problem type. Valid options are 'classification' and 'regression'.")
+            raise ValueError(
+                "Invalid problem type. Valid options are 'classification' and 'regression'."
+            )
 
-        return pd.DataFrame(selector.fit_transform(self.df), columns=self.df.columns[selector.get_support()])
+        return pd.DataFrame(
+            selector.fit_transform(self.df),
+            columns=self.df.columns[selector.get_support()],
+        )
 
     def encode_categorical(self, columns: list) -> pd.DataFrame:
         """

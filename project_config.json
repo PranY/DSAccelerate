@@ -1,6 +1,6 @@
 {
     "default_context": {
-        "project_name": "Test_project_2",
+        "project_name": "my_awesome_ds_project",
         "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
         "author_name": "Razorpay",
         "description": "description",

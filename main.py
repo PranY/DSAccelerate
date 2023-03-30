@@ -9,7 +9,7 @@ cookiecutter_json_path = Path.cwd() / "project_config.json"
 
 
 def write_content_to_project():
-    for file_location, prompt in prompts.items():
+    for prompt, file_location in prompts.values():
         response_text = get_response(prompt)
         with open(file_location, "w") as file:
             file.write(response_text)
