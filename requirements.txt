@@ -1,2 +1,5 @@
 cookiecutter
 requests
+python-dotenv
+openai
+black
