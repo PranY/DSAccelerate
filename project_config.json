@@ -20,10 +20,12 @@
             "data_normalization": "true",
             "data_standardization": "true"
         },
+        "target_column": "y",
         "training": {
             "split_per": "",
             "sort_by": "",
-            "model": []
+            "model": [],
+            "save_model": "models/model.pkl"
         },
         "metrics": [
             "precision",

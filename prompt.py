@@ -1,4 +1,5 @@
 import json
+import pdb 
 
 # Open the JSON file
 with open("project_config.json", "r") as f:
@@ -25,9 +26,15 @@ project_dir = result["default_context"]["project_name"].lower()
 #     )
 # }
 
+# ------THESE THREE VARIABLES, WE NEED TO DISCUSS WITH ADITI-------
+hard_traintest_data_path = "data_path"
+hard_train_save_path = "train.txt"
+hard_test_save_path = "test.txt"
+metrics_query_to_gpt = "give me code only - import train data from '{0}', test data from '{1}', with target column '{2}', load model from '{3}', predict '{2}' on train and test data and compute and print {4} and save metrics in {5} and {6}".format(hard_traintest_data_path, hard_traintest_data_path, data["specifications"]["target_column"], data["specifications"]["training"]["save_model"], data["specifications"]["metrics"], hard_train_save_path, hard_test_save_path)
+pdb.set_trace()
+
 prompts = {
-    "sample": (
-        "import train data from 'data/train.csv', test data from 'data/test.csv', with target column 'churn_value', load model from 'model/tree.pkl', predict 'churn_value' on train and test data and compute and print ['precision', 'recall', 'f1'] and save metrics in train_metrics.txt and test_metrics.txt",
-        project_dir + "/sample.py",
+    "matrics": (
+        metrics_query_to_gpt,
     )
 }
