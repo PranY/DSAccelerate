@@ -40,21 +40,33 @@ def create_requirement_file(folder_path):
             "urllib",
             "itertools",
             "collections",
+            "dotenv",
+            "sklearn",
+            "pyodbc",
+            "awscli",
+            "logging",
+            "src",
+            "shutil",
         ]
     )
     imported_libraries_set = set()
+    imported_libraries_set.add("scikit-learn==0.23.2")
+    imported_libraries_set.add("awscli==1.27.8")
     for subdir, dirs, files in os.walk(folder_path):
         for file in files:
             if file.endswith(".py"):
                 file_path = os.path.join(subdir, file)
-                imported_libraries = get_imported_libraries(file_path)
-                imported_libraries_set.update(
-                    [
-                        library.split(".")[0]
-                        for library in imported_libraries
-                        if library.split(".")[0] not in existing_libraries
-                    ]
-                )
+                try:
+                    imported_libraries = get_imported_libraries(file_path)
+                    imported_libraries_set.update(
+                        [
+                            library.split(".")[0]
+                            for library in imported_libraries
+                            if library.split(".")[0] not in existing_libraries
+                        ]
+                    )
+                except:
+                    pass
     with open(folder_path + "/requirements.txt", "a") as file:
         for package in sorted(imported_libraries_set):
             file.write(package + "\n")

@@ -23,7 +23,7 @@ def do_data_split_processing(prompt_details, request_config, project_dir):
         **{
             "train_test_split_percentage": train_test_split_percentage,
             "test_val_split_percentage": test_val_split_percentage,
-            "location": project_dir + "/data/interim",
+            "location": "data/interim",
         }
     )
     return prompt_value, project_dir + file_location

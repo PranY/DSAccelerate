@@ -2,6 +2,7 @@ from pathlib import Path
 import subprocess
 import os
 import json
+import shutil
 
 from openai_wrapper import invoke_completion_api
 from prompt import prompts
@@ -40,6 +41,7 @@ if __name__ == "__main__":
                 "-v",
             ]
         )
+    shutil.copy(".internal/make_dataset.py", project_dir + "/src/data/make_dataset.py")
     write_content_to_project(
         do_data_split_processing(
             prompts["model_data_splitting"], request_config, project_dir
@@ -52,3 +54,4 @@ if __name__ == "__main__":
     )
     write_content_to_project(prompts["visualisation"])
     create_requirement_file(project_dir)
+    shutil.copy(".internal/template_main.py", project_dir + "/src/__init__.py")
