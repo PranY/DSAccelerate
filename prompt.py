@@ -1,4 +1,5 @@
 import json
+import pdb 
 
 # Open the JSON file
 with open("project_config.json", "r") as f:
@@ -25,9 +26,12 @@ project_dir = result["default_context"]["project_name"].lower()
 #     )
 # }
 
+visualisation_query = "Give me code only - Read train and test data from {0} and {1} and separate categorical and numeric columns. For categorical columns plot {2}. For numeric columns plot {3}.".format(data["specifications"]["data_source"], data["specifications"]["data_source"], data["specifications"]["visualisation"]["categorical"], data["specifications"]["visualisation"]["numeric"])
+pdb.set_trace()
+
 prompts = {
-    "sample": (
-        "import train data from 'data/train.csv', test data from 'data/test.csv', with target column 'churn_value', load model from 'model/tree.pkl', predict 'churn_value' on train and test data and compute and print ['precision', 'recall', 'f1'] and save metrics in train_metrics.txt and test_metrics.txt",
-        project_dir + "/sample.py",
+    "visualisation": (
+        visualisation_query,
+        project_dir + "/visualisation/visualisa.py",
     )
 }

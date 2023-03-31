@@ -29,6 +29,19 @@
             "precision",
             "recall",
             "f1"
-        ]
+        ],
+        "visualisation": {
+            "categorical": [
+                "bar graph", 
+                "pie chart", 
+                "heatmap"
+            ],
+            "numeric": [
+                "histogram with 10 bins", 
+                "box plot", 
+                "density plot", 
+                "scatter plot and heatmap"
+            ]
+        }
     }
 }
