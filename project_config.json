@@ -9,9 +9,15 @@
         "aws_profile": "default",
         "python_interpreter": "python3"
     },
+    "default_specifications" : {
+        "split_percentage": 30,
+        "validation_split_percentage": 20,
+        "model_type": "classification"
+    },
     "specifications": {
         "data_format": "csv",
         "data_source": "iris",
+        "label": "",
         "preprocessing": {
             "null_imputation_num": "mean",
             "null_imputation_cat": "mode",
@@ -21,9 +27,12 @@
             "data_standardization": "true"
         },
         "training": {
-            "split_per": "",
+            "split_percentage": "",
+            "validation_split_percentage": "",
             "sort_by": "",
-            "model": []
+            "model": [],
+            "model_type": "classification",
+            "evalutation": ""
         },
         "metrics": [
             "precision",

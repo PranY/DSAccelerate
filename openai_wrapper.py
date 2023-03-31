@@ -9,11 +9,11 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
-def get_response(prompt):
+def invoke_completion_api(prompt):
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=prompt,
-        temperature=0.7,
+        temperature=0,
         max_tokens=1000,
         top_p=0.1,
         presence_penalty=0,
