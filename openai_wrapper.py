@@ -14,7 +14,7 @@ def invoke_completion_api(prompt):
         model="text-davinci-003",
         prompt=prompt,
         temperature=0,
-        max_tokens=1000,
+        max_tokens=2000,
         top_p=0.1,
         presence_penalty=0,
         frequency_penalty=0,

@@ -50,6 +50,11 @@
                 "box plot", 
                 "density plot", 
                 "scatter plot and heatmap"
+            ],
+            "model": [
+                "AUC",
+                "Confusion Matrix",
+                "Precision Recall Curve"
             ]
         }
     }
