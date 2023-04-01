@@ -5,14 +5,17 @@ Accelerating Analysts' Data Science Development
 
 1. Clone or download the DSAccelerate Project
 2. Create a new environment using conda (preferred) or any other utility like venv for this project and run the command `make requirements` to setup the DSAccelerate Project.
-3. Decide your project name and description, and run the command `make create <name> <description>` to create your project. In case you don't provide any arguments, a project with name `my_awesome_ds_project` will be created.
-4. Go to the prompts.py file to inspect or edit the prompts, and run the command `make update`. This will update the project files in your project based on the prompts provided in the prompts.py file.
-5. This will generate a DS project in a standardized template format. The number of tweaks needed to make the project runnable should be minimal, and depends on the quality of the ChatGPT prompt and model used.
-6. In case you are working on multiple projects and wish to switch, you need to specify the project name (same as directory) in the `make update <name>` command.
-7. A quickrun.py file has been provided for you to try out custom code if you need. This may help out during prompt engineering.
-8. Once you are satisfied with the resulting project, you can start using it by creating a new environment for the project. This is different from the DSAccelerate environment which uses libraries like cookiecutter to generate projects, which will not be needed for your actual project.
-9. You will need to setup the new environment by running the `make requirements` command inside the project.
-10. After that you can run the project using the command `python __init__.py` which is where we are pushing the code that runs the project. In case you change this during project creation, you can run the standard `python <your file>` command to run it.
+3. You need to add your openai key to the project. Copy the `.env_sample` file and rename it to `.env`. Then, you need to paste your key against the OPENAI_API_KEY variable in the `.env` file.
+4. Decide your project name and description, and run the command `make create <name> <description>` to create your project. In case you don't provide any arguments, a project with name `my_awesome_ds_project` will be created.
+5. Go to the prompts.py file to inspect or edit the prompts, and run the command `make update`. This will update the project files in your project based on the prompts provided in the prompts.py file. You can repeat this step any number of times.
+6. This will generate a DS project in a standardized template format. The number of tweaks needed to make the project runnable should be minimal, and depends on the quality of the ChatGPT prompt and model used.
+7. You can run the `make help` or just `make` command to get the list of available commands.
+8. In case you are working on multiple projects and wish to switch, you need to specify the project name (same as directory) in the `make update <name>` command.
+9. A quickrun.py file has been provided for you to try out custom code if you need. This may help out during prompt engineering.
+10. Once you are satisfied with the resulting project, you can start using it by creating a new environment for the project. This is different from the DSAccelerate environment which uses libraries like cookiecutter to generate projects, which will not be needed for your actual project.
+11. You will need to setup the new environment by running the `make requirements` command inside the project.
+12. After that you can run the project using the command `python __init__.py` which is where we are pushing the code that runs the project. In case you change this during project creation, you can run the standard `python <your file>` command to run it.
+13. If you wish, you could also copy the prompts.py file into your DS Project for record keeping. It will act as an independent location for you to manage your custom prompts.
 
 # Internals
 
