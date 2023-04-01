@@ -3,11 +3,10 @@ import os
 import sys
 import shutil
 from dotenv import load_dotenv, set_key
-import pkgutil
-import inspect
+from copy import deepcopy
 
-
-from prompts import pregenerated_files_dict, prompt_dict
+from prompts import pregenerated_files_dict, prompt_dict, pregenerated_file_prompt_dict
+from main_requirement_file import create_requirement_file
 
 # Load the contents of the .env file into the environment variables
 load_dotenv()
@@ -18,10 +17,11 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 if len(sys.argv) >= 2 and os.path.exists(sys.argv[1]):
     project_name = sys.argv[1]
     set_key(".env", "cookiecutter.project_name", project_name)
-    print(f'switched to project `{project_name}`')
+    print(f"switched to project `{project_name}`")
 
-project_name = os.getenv('cookiecutter.project_name')
-print(f'updating project `{project_name}`')
+project_name = os.getenv("cookiecutter.project_name")
+print(f"updating project `{project_name}`")
+
 
 def invoke_completion_api(prompt):
     response = openai.Completion.create(
@@ -42,53 +42,22 @@ def invoke_completion_api(prompt):
     response_text = response.choices[0].text
     return response_text
 
-def update_requirements_txt():
 
-    # List of modules to ignore
-    ignore_modules = ["builtins", "sys", "os", "math", "random"]
-
-    # List of Python script files in the project directory
-    python_files = [filename for filename in os.listdir(project_name) if filename.endswith(".py")]
-
-    # Set of used modules
-    used_modules = set()
-
-    # Loop over Python script files
-    for filename in python_files:
-        # Get list of imported modules
-        imported_modules = []
-        module_name = os.path.splitext(filename)[0]
-        module = __import__(module_name)
-        for name, module in inspect.getmembers(module):
-            if inspect.ismodule(module) and not name.startswith("_") and module.__name__ not in ignore_modules:
-                imported_modules.append(module.__name__)
-
-        # Get list of modules used by the script
-        for module in imported_modules:
-            used_modules.add(module)
-            try:
-                package = __import__(module)
-                for importer, modname, ispkg in pkgutil.walk_packages(package.__path__):
-                    used_modules.add(modname)
-            except ImportError:
-                pass
-
-    # Write list of modules to requirements.txt
-    with open(project_name+"/requirements.txt", "a") as f:
-        for module in sorted(list(used_modules)):
-            f.write(module + "\n")
-
-# populate pregenerated files
-for relative_file_location, pregenerated_file_location in pregenerated_files_dict.items():
-    file_location = project_name + "/" + relative_file_location
-    shutil.copy(pregenerated_file_location, file_location)
+combined_prompt_dict = deepcopy(prompt_dict)
+combined_prompt_dict.update(pregenerated_file_prompt_dict)
 
 # update files using prompts
-for relative_file_location, prompt in prompt_dict.items():
-    file_location = project_name + "/" + relative_file_location
+for relative_file_location, prompt in combined_prompt_dict.items():
     response_text = invoke_completion_api(prompt)
-    with open(file_location, "w") as file:
+    with open(relative_file_location, "w") as file:
         file.write(response_text)
         file.close()
 
-update_requirements_txt()
+# populate pregenerated files
+for (
+    relative_file_location,
+    pregenerated_file_location,
+) in pregenerated_files_dict.items():
+    shutil.copy(pregenerated_file_location, relative_file_location)
+
+create_requirement_file(project_name)

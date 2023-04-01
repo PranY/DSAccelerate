@@ -7,7 +7,7 @@ requirements:
 
 
 ## Create a new DS Project using DSAccelerate.
-init:
+create:
 	python __init__.py $(filter-out $@,$(MAKECMDGOALS))
 
 
