@@ -1,3 +1,12 @@
+# use this dict to map the pregenerated files to the corresponding project files
+pregenerated_files_dict = {
+    "/requirements.txt": "pregenerated_files/requirements.txt",
+    "/src/data/make_dataset.py": "pregenerated_files/make_dataset.py",
+    "/src/features/build_features.py": "pregenerated_files/build_features.py",
+    "/src/__init__.py": "pregenerated_files/main.py",
+}
+
+# use this prompt dictionary to populate the project file with chatgpt prompt responses
 prompt_dict = {
     # model data splitting
     "/src/models/data_split.py": "Write a python code with imports to create a class with name `ModelDataSplitter` containing a function name `do_data_split` by taking X and train test split AS 30 percent and train validation split 20 percent. The class should also save the split dataset in csv format inside `data/interim` folder with file name train, validate and test.",
