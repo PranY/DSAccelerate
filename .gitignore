@@ -78,6 +78,9 @@ target/
 # exclude data from source control by default
 /data/
 
+# exclude cookiecutter.json config file
+cookiecutter.json
+
 # Mac OS-specific storage files
 .DS_Store
 
@@ -87,3 +90,6 @@ target/
 
 # Mypy cache
 .mypy_cache/
+
+# removing quickrun to prevent accidental pushes
+quickrun.py
