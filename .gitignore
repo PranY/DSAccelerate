@@ -90,3 +90,6 @@ cookiecutter.json
 
 # Mypy cache
 .mypy_cache/
+
+# removing quickrun to prevent accidental pushes
+quickrun.py
