@@ -17,7 +17,7 @@
     "specifications": {
         "data_format": "csv",
         "data_source": "iris",
-        "label": "",
+        "label": "Species",
         "preprocessing": {
             "null_imputation_num": "mean",
             "null_imputation_cat": "mode",
@@ -27,12 +27,13 @@
             "data_standardization": "true"
         },
         "training": {
+            "model_algorithm_name": "lr",
             "split_percentage": "",
             "validation_split_percentage": "",
             "sort_by": "",
             "model": [],
             "model_type": "classification",
-            "evalutation": ""
+            "evaluation": "F1"
         },
         "metrics": [
             "precision",

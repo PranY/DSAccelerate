@@ -22,6 +22,18 @@ def write_content_to_project(prompt_details):
     with open(file_location, "w") as file:
         file.write(response_text)
 
+def create_constant_file(request_config):
+    my_const_dict = {}
+    my_const_dict["label"] = f"""{request_config["specifications"]["label"]}"""
+    my_const_dict["evaluation"] = request_config["specifications"]["training"]["evaluation"]
+    with open('.internal/constant.py', 'w') as f:
+        # Loop over the dictionary keys and write variables to the file
+        for key in my_const_dict:
+            # Use exec() to create a variable with the key name and the dictionary value
+            exec(f"""{key} = "{my_const_dict[key]}" """, globals())
+            # Write the variable to the file
+            f.write(f"""{key} = "{my_const_dict[key]}"\n""")
+
 
 if __name__ == "__main__":
     # Call the cookiecutter command-line tool with the custom JSON file
@@ -55,3 +67,5 @@ if __name__ == "__main__":
     write_content_to_project(prompts["visualisation"])
     create_requirement_file(project_dir)
     shutil.copy(".internal/template_main.py", project_dir + "/src/__init__.py")
+    create_constant_file(request_config)
+    shutil.copy(".internal/constant.py", project_dir + "/src/constant.py")

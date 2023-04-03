@@ -6,13 +6,13 @@ def __get_default_model_values(request_config):
         if specification["model_type"]
         else default_specifications["model_type"]
     )
-    return model_type
+    return model_type, specification["model_algorithm_name"]
 
 
 def create_model_training_code(prompt_details, request_config, project_dir):
-    model_type = __get_default_model_values(request_config)
+    model_type, model_algorithm_name = __get_default_model_values(request_config)
     prompt_unformatted_value, file_location = prompt_details
     prompt_value = prompt_unformatted_value.format(
-        **{"model_type": model_type, "location": "models"}
+        **{"model_type": model_type, "location": "models", "model_algorithm_name": model_algorithm_name}
     )
     return prompt_value, project_dir + file_location

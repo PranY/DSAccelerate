@@ -25,3 +25,26 @@ Accelerating Analysts' Data Science Development
     "total_tokens": 491
   }
 }
+
+# ML Algorithm name allow
+model_algorithm_name support in PyCaret:
+
+- Logistic Regression ('lr')
+- K Neighbors Classifier ('knn')
+- Naive Bayes ('nb')
+- Decision Tree Classifier ('dt')
+- Random Forest Classifier ('rf')
+- Extra Trees Classifier ('et')
+- Gradient Boosting Classifier ('gbc')
+- Extreme Gradient Boosting Classifier ('xgboost')
+- Light Gradient Boosting Machine ('lightgbm')
+- CatBoost Classifier ('catboost')
+- AdaBoost Classifier ('ada')
+- Linear Discriminant Analysis ('lda')
+- Quadratic Discriminant Analysis ('qda')
+- Ridge Classifier ('ridge')
+- Ridge Classifier CV ('ridgecv')
+- Passive Aggressive Classifier ('pac')
+- Perceptron ('perceptron')
+- Voting Classifier ('voting')
+- Stacking Classifier ('stacking')

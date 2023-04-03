@@ -56,8 +56,8 @@ prompts = {
     ),
     "model_training": (
         """Give me code with imports to create a class 'ModelTraining' which takes training data `training_data`, label name `label_name` and best model metric`best_model_metric` as input. 
-        The class constructor should set `model_save_location` to {location} which will be used to save all model created artifacts. 
-        This class should contain `train_models` function which will use pycaret library and train data on all {model_type} algorithms and saved all the model iteratively at location `model_save_location`. 
+        The class constructor should set `model_save_location` to {location} which will be used to save all model created artifacts and also take `model_algorithm_name` which could be null.
+        This class should contain `train_models` function which will use pycaret library and train data on {model_algorithm_name} if not null or all {model_type} algorithms and saved all the model iteratively at location `model_save_location` inside try and except to handle exception. 
         This class should contain `evaluate_model` function which will read all the models trained and kept in `model_save_location` location by `train_models` function and compare them based on`best_model_metric` metric value and return the best model
         """,
         "/src/models/train_model.py",
