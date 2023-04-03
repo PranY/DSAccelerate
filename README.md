@@ -1,5 +1,5 @@
 # DSAccelerate
-Accelerating Data Science Development
+Accelerating Data Science Development using ChatGPT.
 
 
 # Instructions
