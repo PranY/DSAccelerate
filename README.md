@@ -5,17 +5,17 @@ Accelerating Analysts' Data Science Development
 # Instructions
 
 1. Setup DSAccelerate
-    a. Download the repository zip file or clone it using the git clone command.
-    b. (Recommended) Create a new python environment using conda, venv or any other service.
-    c. Run the `make download` command to set it up.
+    1. Download the repository zip file or clone it using the git clone command.
+    2. (Recommended) Create a new python environment using conda, venv or any other service.
+    3. Run the `make download` command to set it up.
 2. Create your new project
-    a. Provide your specifications in the `project_config.json` file.
-    b. Run the `make run` command to generate your project.
+    1. Provide your specifications in the `project_config.json` file.
+    2. Run the `make run` command to generate your project.
 3. Setup your new project
-    a. (Recommended) Create a new python environment using conda, venv or any other service for your project.
-    b. Get into your project directory and run the `make requirements` command to setup your environments.
-    c. Tweak the generated files as per your requirements and resolve any errors if they occur.
-    d. Finally, run your project using the command `python src/__init__.py`
+    1. (Recommended) Create a new python environment using conda, venv or any other service for your project.
+    2. Get into your project directory and run the `make requirements` command to setup your environments.
+    3. Tweak the generated files as per your requirements and resolve any errors if they occur.
+    4. Finally, run your project using the command `python src/__init__.py`
 
 
 # ML Algorithms available
