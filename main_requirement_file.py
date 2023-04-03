@@ -47,12 +47,15 @@ def create_requirement_file(folder_path):
             "logging",
             "src",
             "shutil",
+            "constant",
+            "aws-cli"
         ]
     )
     imported_libraries_set = set()
     imported_libraries_set.add("scikit-learn==0.23.2")
     imported_libraries_set.add("awscli==1.27.8")
     for subdir, dirs, files in os.walk(folder_path):
+        dirs[:] = [d for d in dirs if d in ["src"]]
         for file in files:
             if file.endswith(".py"):
                 file_path = os.path.join(subdir, file)
